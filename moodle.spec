@@ -1,21 +1,26 @@
 # TODO:
 # - mark i18n content as lang()
-# - apache config and installing them
+%bcond_with	apache1		# build for work with apache1 conf system
 Summary:	Learning management system
 Summary(pl):	System zarz±dzania nauczaniem
 Name:		moodle
 Version:	1.3.4
-Release:	0.2
+Release:	0.3
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://dl.sourceforge.net/moodle/%{name}-%{version}.tgz
 # Source0-md5:	2d534ddbb9c7985926dfceab4fcc09db
-#Source1:	%{name}.conf
+Source1:	%{name}-http.conf
 URL:		http://moodle.org/
 Requires:	php-mysql
 Requires:	php-pcre
 Requires:	php
-Requires:	webserver
+%if %{without apache1}
+Requires:	apache >= 2
+%endif
+%if %{with apache1}
+Requires:	apache < 2
+%endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -54,7 +59,7 @@ nauczania bezpo¶redniego.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_moodledir},%{_sysconfdir}}
+install -d $RPM_BUILD_ROOT{%{_moodledir},%{_sysconfdir},/etc/httpd/httpd.conf}
 
 # Move docs into proper place:
 mv -f auth/README README_auth.txt
@@ -79,7 +84,14 @@ mv -f $RPM_BUILD_ROOT%{_moodledir}/config-dist.php $RPM_BUILD_ROOT%{_sysconfdir}
 ln -sf %{_sysconfdir}/config.php $RPM_BUILD_ROOT%{_moodledir}/config.php
 
 # Install apache config:
-#install %{SOURCE1} $RPM_BUILD_ROOT/etc/httpd/%{name}.conf
+%if %{without apache1}
+	#apache2
+	install %{SOURCE1} $RPM_BUILD_ROOT/etc/httpd/httpd.conf/88_%{name}.conf
+%endif
+%if %{with apache1}
+	#apache 1
+	install %{SOURCE1} $RPM_BUILD_ROOT/etc/httpd/%{name}.conf
+%endif
 
 # Final cleanup:
 rm -f $RPM_BUILD_ROOT%{_moodledir}/{*.txt,tags,doc/COPYRIGHT.txt}
@@ -88,10 +100,8 @@ rm -f $RPM_BUILD_ROOT%{_moodledir}/{*.txt,tags,doc/COPYRIGHT.txt}
 rm -rf $RPM_BUILD_ROOT
 
 %post
-if [ -f /etc/httpd/httpd.conf ] && ! grep -q "^Include.*phpMyAdmin.conf" /etc/httpd/httpd.conf; then
-	echo "Include /etc/httpd/phpMyAdmin.conf" >> /etc/httpd/httpd.conf
-elif [ -d /etc/httpd/httpd.conf ]; then
-	mv -f /etc/httpd/%{name}.conf /etc/httpd/httpd.conf/99_%{name}.conf
+if [ -f /etc/httpd/httpd.conf ] && ! grep -q "^Include.*%{name}.conf" /etc/httpd/httpd.conf; then
+	echo "Include /etc/httpd/%{name}.conf" >> /etc/httpd/httpd.conf
 fi
 if [ -f /var/lock/subsys/httpd ]; then
 	/usr/sbin/apachectl restart 1>&2
@@ -103,8 +113,8 @@ if [ "$1" = "0" ]; then
 	if [ -d /etc/httpd/httpd.conf ]; then
 		rm -f /etc/httpd/httpd.conf/99_%{name}.conf
 	else
-		grep -v "^Include.*phpMyAdmin.conf" /etc/httpd/httpd.conf > \
-			etc/httpd/httpd.conf.tmp
+		grep -v "^Include.*%{name}.conf" /etc/httpd/httpd.conf > \
+			/etc/httpd/httpd.conf.tmp
 		mv -f /etc/httpd/httpd.conf.tmp /etc/httpd/httpd.conf
 		if [ -f /var/lock/subsys/httpd ]; then
 			/usr/sbin/apachectl restart 1>&2
@@ -117,7 +127,14 @@ fi
 %doc *.txt
 %dir %{_sysconfdir}
 %attr(640,root,http) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/*
-#%config(noreplace) %verify(not size mtime md5) /etc/httpd/%{name}.conf
+%if %{without apache1}
+#apache2
+%config(noreplace) /etc/httpd/httpd.conf/88_%{name}.conf
+%endif
+%if %{with apache1}
+#apache1
+%config(noreplace) /etc/httpd/%{name}.conf
+%endif
 %dir %{_moodledir}
 %{_moodledir}/*.php
 %dir %{_moodledir}/auth
