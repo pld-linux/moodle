@@ -23,7 +23,17 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_sysconfdir	/etc/%{name}
 
 %description
-Moodle is a learning management system for producing Internet-based course Web sites. It is written in PHP and is easy to install and use on Linux, Windows, Mac OS X, SunOS, BSD, and Netware 6. It has been designed to support modern pedagogies based on social constructionist theory, and includes activity modules such as forums, chats, resources, journals, quizzes, surveys, choices, workshops, glossaries, lessons, and assignments. It has been translated into over 36 languages, with more on the way. Moodle offers a free alternative to commercial software such as WebCT or Blackboard, and is being used by a growing number of universities, schools, and independent teachers for distance education or to supplement face-to-face teaching.
+Moodle is a learning management system for producing Internet-based
+course Web sites. It is written in PHP and is easy to install and use
+on Linux, Windows, Mac OS X, SunOS, BSD, and Netware 6. It has been
+designed to support modern pedagogies based on social constructionist
+theory, and includes activity modules such as forums, chats,
+resources, journals, quizzes, surveys, choices, workshops, glossaries,
+lessons, and assignments. It has been translated into over 36
+languages, with more on the way. Moodle offers a free alternative to
+commercial software such as WebCT or Blackboard, and is being used by
+a growing number of universities, schools, and independent teachers
+for distance education or to supplement face-to-face teaching.
 
 %prep
 %setup -q -n %{name}
@@ -67,13 +77,13 @@ fi
 if [ "$1" = "0" ]; then
 	umask 027
 	if [ -d /etc/httpd/httpd.conf ]; then
-	    rm -f /etc/httpd/httpd.conf/99_%{name}.conf
+		rm -f /etc/httpd/httpd.conf/99_%{name}.conf
 	else
 		grep -v "^Include.*phpMyAdmin.conf" /etc/httpd/httpd.conf > \
 			etc/httpd/httpd.conf.tmp
 		mv -f /etc/httpd/httpd.conf.tmp /etc/httpd/httpd.conf
 		if [ -f /var/lock/subsys/httpd ]; then
-		    /usr/sbin/apachectl restart 1>&2
+			/usr/sbin/apachectl restart 1>&2
 		fi
 	fi
 fi
