@@ -1,6 +1,7 @@
 # TODO:
 # - mark i18n content as lang()
 # - apache config and installing them
+# - SECURITY: http://securitytracker.com/alerts/2004/Jul/1010697.html
 Summary:	Learning management system
 Summary(pl):	System zarz±dzania nauczaniem
 Name:		moodle
