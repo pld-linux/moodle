@@ -5,8 +5,8 @@ Summary:	Learning management system
 Summary(pl):	System zarz±dzania nauczaniem
 Name:		moodle
 Version:	1.3.4
-Release:	0.1
-License:	GPL
+Release:	0.2
+License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://dl.sourceforge.net/moodle/%{name}-%{version}.tgz
 # Source0-md5:	2d534ddbb9c7985926dfceab4fcc09db
@@ -54,24 +54,35 @@ nauczania bezpo¶redniego.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_moodledir}/{admin,auth/{db,email,imap,ldap,manual,nntp,none,pop3}} \
-	$RPM_BUILD_ROOT{%{_sysconfdir},/etc/httpd}
+install -d $RPM_BUILD_ROOT{%{_moodledir},%{_sysconfdir}}
 
-install auth/README README_auth.txt
-install *.php $RPM_BUILD_ROOT%{_moodledir}
-install admin/*.{php,html} $RPM_BUILD_ROOT%{_moodledir}/admin
-cp -R auth/* $RPM_BUILD_ROOT%{_moodledir}/auth/
-#install lang/*.php $RPM_BUILD_ROOT%{_moodledir}/lang
-#install css/* $RPM_BUILD_ROOT%{_moodledir}/css
-#install libraries/*.{js,php} $RPM_BUILD_ROOT%{_moodledir}/libraries
-#install libraries/auth/*.php $RPM_BUILD_ROOT%{_moodledir}/libraries/auth
-#install libraries/export/*.php $RPM_BUILD_ROOT%{_moodledir}/libraries/export
+# Move docs into proper place:
+mv -f auth/README README_auth.txt
+mv -f auth/ldap/README-LDAP README-LDAP.txt
+mv -f lang/README README_lang.txt
+mv -f filter/tex/README.mimetex README_mimetex.txt
+mv -f filter/multilang/README.txt README_multilang.txt
+mv -f filter/censor/README.txt README_censor.txt
+mv -f mod/README.txt README_mod.txt
+mv -f mod/chat/README.txt README_mod_chat.txt
+mv -f mod/glossary/README.txt README_mod_glossary.txt
+mv -f mod/glossary/TODO.txt TODO_mod_glossary.txt
+mv -f mod/scorm/README.txt README_mod_scorm.txt
+mv -f mod/workshop/todo.txt TODO_mod_workshop.txt
+mv -f theme/UPGRADE.txt UPGRADE_theme.txt
 
-install $RPM_BUILD_ROOT%{_moodledir}/config-dist.php $RPM_BUILD_ROOT%{_sysconfdir}/config.php
+# Instalation:
+cp -R * $RPM_BUILD_ROOT%{_moodledir}
+
+# Play with configs:
+mv -f $RPM_BUILD_ROOT%{_moodledir}/config-dist.php $RPM_BUILD_ROOT%{_sysconfdir}/config.php
 ln -sf %{_sysconfdir}/config.php $RPM_BUILD_ROOT%{_moodledir}/config.php
 
+# Install apache config:
 #install %{SOURCE1} $RPM_BUILD_ROOT/etc/httpd/%{name}.conf
-rm -f $RPM_BUILD_ROOT%{_moodledir}/{config-dist.php,auth/README}
+
+# Final cleanup:
+rm -f $RPM_BUILD_ROOT%{_moodledir}/{*.txt,tags,doc/COPYRIGHT.txt}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -103,16 +114,11 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc README* auth/ldap/README-LDAP
+%doc *.txt
 %dir %{_sysconfdir}
 %attr(640,root,http) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/*
 #%config(noreplace) %verify(not size mtime md5) /etc/httpd/%{name}.conf
 %dir %{_moodledir}
-#%{_moodledir}/images
-#%{_moodledir}/lang
-#%{_moodledir}/libraries
-#%{_moodledir}/*.css
-#%{_moodledir}/*.html
 %{_moodledir}/*.php
 %dir %{_moodledir}/auth
 %dir %{_moodledir}/auth/db
@@ -128,3 +134,74 @@ fi
 %dir %{_moodledir}/admin
 %{_moodledir}/admin/*.html
 %{_moodledir}/admin/*.php
+%dir %{_moodledir}/backup
+%{_moodledir}/backup/*.html
+%{_moodledir}/backup/*.php
+%{_moodledir}/backup/*.txt
+%dir %{_moodledir}/backup/db
+%{_moodledir}/backup/db/*.php
+%{_moodledir}/backup/db/*.sql
+%dir %{_moodledir}/blocks
+%{_moodledir}/blocks/*
+%dir %{_moodledir}/calendar
+%{_moodledir}/calendar/*.html
+%{_moodledir}/calendar/*.php
+%dir %{_moodledir}/course
+%{_moodledir}/course/*.php
+%{_moodledir}/course/*.html
+%dir %{_moodledir}/course/format
+%{_moodledir}/course/format/*/*.php
+%dir %{_moodledir}/doc
+%{_moodledir}/doc/*.css
+%{_moodledir}/doc/*.html
+%{_moodledir}/doc/*.php
+%dir %{_moodledir}/doc/pix
+%{_moodledir}/doc/pix/*.jpg
+%dir %{_moodledir}/error
+%{_moodledir}/error/index.php
+%dir %{_moodledir}/files
+%{_moodledir}/files/*.php
+%dir %{_moodledir}/filter
+%dir %{_moodledir}/filter/*
+%{_moodledir}/filter/*/*.php
+%{_moodledir}/filter/*/*.pl
+%{_moodledir}/filter/*/*.pm
+%{_moodledir}/filter/*/*.swf
+%{_moodledir}/filter/tex/mimetex.linux
+# Is it needed? Maybe doc?
+%{_moodledir}/filter/mediaplugin/mp3player.fla.zip
+%dir %{_moodledir}/lang
+%dir %{_moodledir}/lang/*
+%{_moodledir}/lang/*/*
+%dir %{_moodledir}/lib
+%{_moodledir}/lib/*
+%dir %{_moodledir}/login
+%{_moodledir}/login/*.php
+%{_moodledir}/login/*.html
+%dir %{_moodledir}/mod
+%dir %{_moodledir}/mod/*
+%{_moodledir}/mod/*/*
+%dir %{_moodledir}/pix
+%{_moodledir}/pix/*.gif
+%{_moodledir}/pix/*.png
+%dir %{_moodledir}/pix/c
+%dir %{_moodledir}/pix/f
+%dir %{_moodledir}/pix/g
+%dir %{_moodledir}/pix/i
+%dir %{_moodledir}/pix/s
+%dir %{_moodledir}/pix/t
+%dir %{_moodledir}/pix/u
+%{_moodledir}/pix/*/*.gif
+%{_moodledir}/pix/*/*.png
+%dir %{_moodledir}/rss
+%{_moodledir}/rss/*.php
+%dir %{_moodledir}/theme
+%{_moodledir}/theme/*
+%dir %{_moodledir}/user
+%{_moodledir}/user/*.html
+%{_moodledir}/user/*.php
+%dir %{_moodledir}/user/default
+%{_moodledir}/user/default/*.jpg
+%{_moodledir}/user/default/*.txt
+%dir %{_moodledir}/userpix
+%{_moodledir}/userpix/*.php
