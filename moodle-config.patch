@@ -1,0 +1,29 @@
+--- ./config-dist.php.org	Mon May 24 09:43:09 2004
++++ ./config-dist.php	Sat Aug 14 23:00:31 2004
+@@ -80,7 +80,7 @@
+ //    $CFG->dirroot = '/var/www/html/moodle';     // Redhat Linux
+ //    $CFG->dirroot = '/home/example/public_html/moodle'; // Cpanel host
+ 
+-$CFG->dirroot   = '/home/example/public_html/moodle';
++$CFG->dirroot   = '/usr/share/moodle';
+ 
+ 
+ //=========================================================================
+@@ -96,7 +96,7 @@
+ //
+ // - On Windows systems you might specify something like 'c:\moodledata'
+ 
+-$CFG->dataroot  = '/home/example/moodledata';
++$CFG->dataroot  = '/var/lib/moodle';
+ 
+ 
+ //=========================================================================
+@@ -110,7 +110,7 @@
+ // to make sure the web server process (eg Apache) can access the files.
+ // NOTE: the prefixed 0 is important, and don't use quotes.
+ 
+-$CFG->directorypermissions = 0777;
++$CFG->directorypermissions = 0770;
+ 
+ 
+ //=========================================================================
