@@ -1,16 +1,15 @@
 # TODO:
 # - mark i18n content as lang()
 # - apache config and installing them
-# - SECURITY: http://securitytracker.com/alerts/2004/Jul/1010697.html
 Summary:	Learning management system
 Summary(pl):	System zarz±dzania nauczaniem
 Name:		moodle
-Version:	1.3.1
+Version:	1.3.4
 Release:	0.1
 License:	GPL
 Group:		Applications/Databases/Interfaces
 Source0:	http://dl.sourceforge.net/moodle/%{name}-%{version}.tgz
-# Source0-md5:	c56112ac3c5867548ff51b063c836cb9
+# Source0-md5:	2d534ddbb9c7985926dfceab4fcc09db
 #Source1:	%{name}.conf
 URL:		http://moodle.org/
 Requires:	php-mysql
@@ -58,8 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_moodledir}/{admin,auth/{db,email,imap,ldap,manual,nntp,none,pop3}} \
 	$RPM_BUILD_ROOT{%{_sysconfdir},/etc/httpd}
 
-mv -f auth/README README_auth.txt
-
+install auth/README README_auth.txt
 install *.php $RPM_BUILD_ROOT%{_moodledir}
 install admin/*.{php,html} $RPM_BUILD_ROOT%{_moodledir}/admin
 cp -R auth/* $RPM_BUILD_ROOT%{_moodledir}/auth/
@@ -69,10 +67,11 @@ cp -R auth/* $RPM_BUILD_ROOT%{_moodledir}/auth/
 #install libraries/auth/*.php $RPM_BUILD_ROOT%{_moodledir}/libraries/auth
 #install libraries/export/*.php $RPM_BUILD_ROOT%{_moodledir}/libraries/export
 
-mv $RPM_BUILD_ROOT%{_moodledir}/config-dist.php $RPM_BUILD_ROOT%{_sysconfdir}/config.php
+install $RPM_BUILD_ROOT%{_moodledir}/config-dist.php $RPM_BUILD_ROOT%{_sysconfdir}/config.php
 ln -sf %{_sysconfdir}/config.php $RPM_BUILD_ROOT%{_moodledir}/config.php
 
 #install %{SOURCE1} $RPM_BUILD_ROOT/etc/httpd/%{name}.conf
+rm -f $RPM_BUILD_ROOT%{_moodledir}/{config-dist.php,auth/README}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -104,12 +103,11 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc README*
+%doc README* auth/ldap/README-LDAP
 %dir %{_sysconfdir}
 %attr(640,root,http) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/*
 #%config(noreplace) %verify(not size mtime md5) /etc/httpd/%{name}.conf
 %dir %{_moodledir}
-#%{_moodledir}/css
 #%{_moodledir}/images
 #%{_moodledir}/lang
 #%{_moodledir}/libraries
@@ -117,4 +115,16 @@ fi
 #%{_moodledir}/*.html
 %{_moodledir}/*.php
 %dir %{_moodledir}/auth
-%dir %{_moodledir}/auth/*
+%dir %{_moodledir}/auth/db
+%dir %{_moodledir}/auth/email
+%dir %{_moodledir}/auth/imap
+%dir %{_moodledir}/auth/ldap
+%dir %{_moodledir}/auth/manual
+%dir %{_moodledir}/auth/nntp
+%dir %{_moodledir}/auth/none
+%dir %{_moodledir}/auth/pop3
+%{_moodledir}/auth/*/*.php
+%{_moodledir}/auth/*/*.html
+%dir %{_moodledir}/admin
+%{_moodledir}/admin/*.html
+%{_moodledir}/admin/*.php
