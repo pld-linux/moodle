@@ -92,6 +92,7 @@ THEMES="brightretro cordoroyblue cornflower formal_white garden metal oceanblue 
 for i in $THEMES; do
 	mv -f $RPM_BUILD_ROOT%{_moodledir}/theme/$i/config.php $RPM_BUILD_ROOT%{_sysconfdir}/themes/$i.php
 	ln -sf %{_sysconfdir}/themes/$i.php $RPM_BUILD_ROOT%{_moodledir}/theme/$i/config.php
+	install -d $RPM_BUILD_ROOT%{_moodledir}/theme/$i
 done
 
 # Install apache config:
@@ -139,7 +140,7 @@ fi
 %dir %{_sysconfdir}
 %attr(640,root,http) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/config.php
 %dir %{_sysconfdir}/themes
-%attr(640,root,http) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/themes/*.php
+%attr(640,root,http) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/themes/*
 %if %{without apache1}
 #apache2
 %config(noreplace) /etc/httpd/httpd.conf/88_%{name}.conf
