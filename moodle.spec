@@ -1,8 +1,8 @@
 # TODO:
 # - mark i18n content as lang()
 # - apache config and installing them
-Summary:	-
-Summary(pl):	-
+Summary:	Learning management system
+Summary(pl):	System zarz±dzania nauczaniem
 Name:		moodle
 Version:	1.3.1
 Release:	0.1
@@ -35,6 +35,20 @@ commercial software such as WebCT or Blackboard, and is being used by
 a growing number of universities, schools, and independent teachers
 for distance education or to supplement face-to-face teaching.
 
+%description -l pl
+Moodle to system zarz±dzania nauczaniem do tworzenia internetowych
+serwisów z kursami. Jest napisany w PHP i ³atwy w instalacji oraz
+u¿ywaniu pod Linuksem, Windows, MacOS X, SunOS-em, BSD oraz Netware 6.
+Zosta³ zaprojektowany do obs³ugi nowoczesnej pedagogiki opartej na
+teorii konstrukcjonistów socjalnych, zawiera modu³y aktywno¶ci, takie
+jak fora, pogawêdki, zasoby, ¿urnale, quizy, przegl±dy, warsztaty,
+s³owniki, lekcje i ustalenia. Zosta³ przet³umaczony na ponad 36
+jêzyków, i ci±gle s± dodawane nowe. Moodle oferuje darmow± alternatywê
+dla oprogramowania komercyjnego, takiego jak WebCT czy Blackboard, i
+jest u¿ywany przez rosn±c± liczbê uniwersytetów, szkó³ oraz
+niezale¿nych nauczycieli do zdalnego nauczania lub uzupe³nienia
+nauczania bezpo¶redniego.
+
 %prep
 %setup -q -n %{name}
 
@@ -53,7 +67,6 @@ cp -R auth/* $RPM_BUILD_ROOT%{_moodledir}/auth/
 #install libraries/*.{js,php} $RPM_BUILD_ROOT%{_moodledir}/libraries
 #install libraries/auth/*.php $RPM_BUILD_ROOT%{_moodledir}/libraries/auth
 #install libraries/export/*.php $RPM_BUILD_ROOT%{_moodledir}/libraries/export
-
 
 mv $RPM_BUILD_ROOT%{_moodledir}/config-dist.php $RPM_BUILD_ROOT%{_sysconfdir}/config.php
 ln -sf %{_sysconfdir}/config.php $RPM_BUILD_ROOT%{_moodledir}/config.php
