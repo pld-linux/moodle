@@ -5,7 +5,7 @@ Summary:	Learning management system
 Summary(pl):	System zarz±dzania nauczaniem
 Name:		moodle
 Version:	1.3.4
-Release:	0.5
+Release:	0.7
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://dl.sourceforge.net/moodle/%{name}-%{version}.tgz
@@ -64,7 +64,7 @@ nauczania bezpo¶redniego.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_moodledir},%{_moodledata},%{_sysconfdir},/etc/httpd/httpd.conf}
+install -d $RPM_BUILD_ROOT{%{_moodledir},%{_moodledata},%{_sysconfdir}/themes,/etc/httpd/httpd.conf}
 
 # Move docs into proper place:
 mv -f auth/README README_auth.txt
@@ -87,6 +87,12 @@ cp -R * $RPM_BUILD_ROOT%{_moodledir}
 # Play with configs:
 mv -f $RPM_BUILD_ROOT%{_moodledir}/config-dist.php $RPM_BUILD_ROOT%{_sysconfdir}/config.php
 ln -sf %{_sysconfdir}/config.php $RPM_BUILD_ROOT%{_moodledir}/config.php
+
+THEMES="brightretro cordoroyblue cornflower formal_white garden metal oceanblue poweraid standard standardblue standardgreen standardlogo standardred standardwhite"
+for i in $THEMES; do
+	mv -f $RPM_BUILD_ROOT%{_moodledir}/theme/$i/config.php $RPM_BUILD_ROOT%{_sysconfdir}/themes/$i.php
+	ln -sf %{_sysconfdir}/themes/$i.php $RPM_BUILD_ROOT%{_moodledir}/theme/$i/config.php
+done
 
 # Install apache config:
 %if %{without apache1}
@@ -131,7 +137,9 @@ fi
 %defattr(644,root,root,755)
 %doc *.txt
 %dir %{_sysconfdir}
-%attr(640,root,http) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/*
+%attr(640,root,http) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/config.php
+%dir %{_sysconfdir}/themes
+%attr(640,root,http) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/themes/*.php
 %if %{without apache1}
 #apache2
 %config(noreplace) /etc/httpd/httpd.conf/88_%{name}.conf
