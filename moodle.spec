@@ -5,12 +5,13 @@ Summary:	Learning management system
 Summary(pl):	System zarz±dzania nauczaniem
 Name:		moodle
 Version:	1.3.4
-Release:	0.4
+Release:	0.5
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://dl.sourceforge.net/moodle/%{name}-%{version}.tgz
 # Source0-md5:	2d534ddbb9c7985926dfceab4fcc09db
 Source1:	%{name}-http.conf
+Patch0:		%{name}-config.patch
 URL:		http://moodle.org/
 Requires:	php-gd
 Requires:	php-mysql
@@ -27,6 +28,7 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_moodledir	%{_datadir}/%{name}
+%define		_moodledata	/var/lib/moodle
 %define		_sysconfdir	/etc/%{name}
 
 %description
@@ -58,10 +60,11 @@ nauczania bezpo¶redniego.
 
 %prep
 %setup -q -n %{name}
+%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_moodledir},%{_sysconfdir},/etc/httpd/httpd.conf}
+install -d $RPM_BUILD_ROOT{%{_moodledir},%{_moodledata},%{_sysconfdir},/etc/httpd/httpd.conf}
 
 # Move docs into proper place:
 mv -f auth/README README_auth.txt
@@ -224,3 +227,4 @@ fi
 %{_moodledir}/user/default/*.txt
 %dir %{_moodledir}/userpix
 %{_moodledir}/userpix/*.php
+%attr(771,root,http) %dir %{_moodledata}
