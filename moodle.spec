@@ -92,7 +92,8 @@ THEMES="brightretro cordoroyblue cornflower formal_white garden metal oceanblue 
 for i in $THEMES; do
 	mv -f $RPM_BUILD_ROOT%{_moodledir}/theme/$i/config.php $RPM_BUILD_ROOT%{_sysconfdir}/themes/$i.php
 	ln -sf %{_sysconfdir}/themes/$i.php $RPM_BUILD_ROOT%{_moodledir}/theme/$i/config.php
-	install -d $RPM_BUILD_ROOT%{_moodledir}/theme/$i
+	install -d $RPM_BUILD_ROOT%{_sysconfdir}/themes/$i
+	ln -sf %{_sysconfdir}/themes/$i $RPM_BUILD_ROOT%{_moodledir}/theme/$i/data
 done
 
 # Install apache config:
