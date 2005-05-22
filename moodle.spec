@@ -4,7 +4,7 @@
 Summary:	Learning management system
 Summary(pl):	System zarz±dzania nauczaniem
 Name:		moodle
-Version:	1.4.4
+Version:	1.4.5
 Release:	0.1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
@@ -68,7 +68,9 @@ install -d $RPM_BUILD_ROOT{%{_moodledir},%{_moodledata},%{_sysconfdir}/themes,/e
 
 # Move docs into proper place:
 mv -f auth/README README_auth.txt
+mv -f auth/fc/Readme.txt README_auth_fc.txt
 mv -f auth/ldap/README-LDAP README-LDAP.txt
+mv -f course/format/README.txt README-course_format.txt
 mv -f lang/README README_lang.txt
 mv -f filter/tex/README.mimetex README_mimetex.txt
 mv -f filter/multilang/README.txt README_multilang.txt
@@ -108,6 +110,7 @@ done
 
 # Final cleanup:
 rm -f $RPM_BUILD_ROOT%{_moodledir}/{*.txt,tags,doc/COPYRIGHT.txt}
+rm -f $RPM_BUILD_ROOT%{_moodledir}/filter/tex/mimetex.{darwin,exe}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -189,7 +192,10 @@ fi
 %{_moodledir}/doc/*.php
 %dir %{_moodledir}/doc/pix
 %{_moodledir}/doc/pix/*.jpg
-%dir %{_moodledir}/error
+%{_moodledir}/doc/pix/*.png
+#dir %{_moodledir}/enrol
+%{_moodledir}/enrol/
+%dir %{_moodledir}/error/
 %{_moodledir}/error/index.php
 %dir %{_moodledir}/files
 %{_moodledir}/files/*.php
