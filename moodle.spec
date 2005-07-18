@@ -12,7 +12,7 @@ Release:	0.1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://download.moodle.org/stable15/%{name}-%{version}.tgz
-# Source0-md5:	44d34fa3bb369df7610b1874f2409252
+# Source0-md5:	43d484170cc7e364df68239f352528bc
 Source1:	%{name}-http.conf
 Patch0:		%{name}-config.patch
 URL:		http://moodle.org/
