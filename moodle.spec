@@ -83,7 +83,6 @@ mv -f mod/chat/README.txt README_mod_chat.txt
 mv -f mod/glossary/README.txt README_mod_glossary.txt
 mv -f mod/glossary/TODO.txt TODO_mod_glossary.txt
 mv -f mod/scorm/README.txt README_mod_scorm.txt
-mv -f mod/workshop/todo.txt TODO_mod_workshop.txt
 mv -f theme/UPGRADE.txt UPGRADE_theme.txt
 
 # Instalation:
@@ -93,7 +92,7 @@ cp -R * $RPM_BUILD_ROOT%{_moodledir}
 mv -f $RPM_BUILD_ROOT%{_moodledir}/config-dist.php $RPM_BUILD_ROOT%{_sysconfdir}/config.php
 ln -sf %{_sysconfdir}/config.php $RPM_BUILD_ROOT%{_moodledir}/config.php
 
-THEMES="brightretro cordoroyblue cornflower formal_white garden metal oceanblue poweraid standard standardblue standardgreen standardlogo standardred standardwhite"
+THEMES="cornflower formal_white metal oceanblue orangewhite orangewhitepda standard standardblue standardgreen standardlogo standardred standardwhite wood"
 for i in $THEMES; do
 	mv -f $RPM_BUILD_ROOT%{_moodledir}/theme/$i/config.php $RPM_BUILD_ROOT%{_sysconfdir}/themes/$i.php
 	ln -sf %{_sysconfdir}/themes/$i.php $RPM_BUILD_ROOT%{_moodledir}/theme/$i/config.php
@@ -167,8 +166,11 @@ fi
 %dir %{_moodledir}/auth/nntp
 %dir %{_moodledir}/auth/none
 %dir %{_moodledir}/auth/pop3
+%dir %{_moodledir}/auth/shibboleth
+%{_moodledir}/auth/*.html
 %{_moodledir}/auth/*/*.php
 %{_moodledir}/auth/*/*.html
+%{_moodledir}/auth/shibboleth/.htaccess
 %dir %{_moodledir}/admin
 %{_moodledir}/admin/*.html
 %{_moodledir}/admin/*.php
@@ -211,6 +213,8 @@ fi
 %{_moodledir}/filter/tex/mimetex.linux
 # Is it needed? Maybe doc?
 %{_moodledir}/filter/mediaplugin/mp3player.fla.zip
+%dir %{_moodledir}/grade
+%{_moodledir}/grade/*
 %dir %{_moodledir}/lang
 %dir %{_moodledir}/lang/*
 %{_moodledir}/lang/*/*
@@ -219,6 +223,8 @@ fi
 %dir %{_moodledir}/login
 %{_moodledir}/login/*.php
 %{_moodledir}/login/*.html
+%dir %{_moodledir}/message
+%{_moodledir}/message/*
 %dir %{_moodledir}/mod
 %dir %{_moodledir}/mod/*
 %{_moodledir}/mod/*/*
@@ -235,7 +241,7 @@ fi
 %{_moodledir}/pix/*/*.gif
 %{_moodledir}/pix/*/*.png
 %dir %{_moodledir}/rss
-%{_moodledir}/rss/*.php
+%{_moodledir}/rss/*
 %dir %{_moodledir}/theme
 %{_moodledir}/theme/*
 %dir %{_moodledir}/user
