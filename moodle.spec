@@ -22,10 +22,10 @@ Requires:	php-pcre
 Requires:	php-session
 Requires:	php
 %if %{without apache1}
-Requires:	apache >= 2
+Requires:	apache >= 2.0
 %endif
 %if %{with apache1}
-Requires:	apache < 2
+Requires:	apache1
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -65,10 +65,6 @@ nauczania bezpo¶redniego.
 %setup -q -n %{name}
 %patch0 -p1
 
-%install
-rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_moodledir},%{_moodledata},%{_sysconfdir}/themes,/etc/httpd/httpd.conf}
-
 # Move docs into proper place:
 mv -f auth/README README_auth.txt
 mv -f auth/fc/Readme.txt README_auth_fc.txt
@@ -84,6 +80,10 @@ mv -f mod/glossary/README.txt README_mod_glossary.txt
 mv -f mod/glossary/TODO.txt TODO_mod_glossary.txt
 mv -f mod/scorm/README.txt README_mod_scorm.txt
 mv -f theme/UPGRADE.txt UPGRADE_theme.txt
+
+%install
+rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_moodledir},%{_moodledata},%{_sysconfdir}/themes,/etc/httpd/httpd.conf}
 
 # Instalation:
 cp -R * $RPM_BUILD_ROOT%{_moodledir}
