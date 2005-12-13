@@ -16,11 +16,11 @@ Source0:	http://download.moodle.org/stable15/%{name}-%{version}.tgz
 Source1:	%{name}-http.conf
 Patch0:		%{name}-config.patch
 URL:		http://moodle.org/
+Requires:	php
 Requires:	php-gd
 Requires:	php-mysql
 Requires:	php-pcre
 Requires:	php-session
-Requires:	php
 %if %{without apache1}
 Requires:	apache >= 2.0
 %endif
@@ -144,9 +144,9 @@ fi
 %defattr(644,root,root,755)
 %doc *.txt
 %dir %{_sysconfdir}
-%attr(640,root,http) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/config.php
+%attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/config.php
 %dir %{_sysconfdir}/themes
-%attr(640,root,http) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/themes/*
+%attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/themes/*
 %if %{without apache1}
 #apache2
 %config(noreplace) /etc/httpd/httpd.conf/88_%{name}.conf
