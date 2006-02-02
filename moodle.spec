@@ -7,12 +7,12 @@
 Summary:	Learning management system
 Summary(pl):	System zarz±dzania nauczaniem
 Name:		moodle
-Version:	1.5.2
+Version:	1.5.3
 Release:	0.1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://download.moodle.org/stable15/%{name}-%{version}.tgz
-# Source0-md5:	43d484170cc7e364df68239f352528bc
+# Source0-md5:	52dd50298fc1dd8b1b6d8d499608cdd6
 Source1:	%{name}-http.conf
 Patch0:		%{name}-config.patch
 URL:		http://moodle.org/
