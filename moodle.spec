@@ -8,7 +8,7 @@ Summary:	Learning management system
 Summary(pl):	System zarz±dzania nauczaniem
 Name:		moodle
 Version:	1.5.3
-Release:	0.1
+Release:	1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://download.moodle.org/stable15/%{name}-%{version}.tgz
@@ -158,13 +158,16 @@ fi
 %dir %{_moodledir}
 %{_moodledir}/*.php
 %dir %{_moodledir}/auth
+%dir %{_moodledir}/auth/cas
 %dir %{_moodledir}/auth/db
 %dir %{_moodledir}/auth/email
+%dir %{_moodledir}/auth/fc
 %dir %{_moodledir}/auth/imap
 %dir %{_moodledir}/auth/ldap
 %dir %{_moodledir}/auth/manual
 %dir %{_moodledir}/auth/nntp
 %dir %{_moodledir}/auth/none
+%dir %{_moodledir}/auth/pam
 %dir %{_moodledir}/auth/pop3
 %dir %{_moodledir}/auth/shibboleth
 %{_moodledir}/auth/*.html
@@ -190,6 +193,7 @@ fi
 %{_moodledir}/course/*.php
 %{_moodledir}/course/*.html
 %dir %{_moodledir}/course/format
+%dir %{_moodledir}/course/format/*
 %{_moodledir}/course/format/*/*.php
 %dir %{_moodledir}/doc
 %{_moodledir}/doc/*.css
@@ -235,6 +239,7 @@ fi
 %dir %{_moodledir}/pix/f
 %dir %{_moodledir}/pix/g
 %dir %{_moodledir}/pix/i
+%dir %{_moodledir}/pix/m
 %dir %{_moodledir}/pix/s
 %dir %{_moodledir}/pix/t
 %dir %{_moodledir}/pix/u
@@ -242,6 +247,9 @@ fi
 %{_moodledir}/pix/*/*.png
 %dir %{_moodledir}/rss
 %{_moodledir}/rss/*
+%dir %{_moodledir}/sso
+%dir %{_moodledir}/sso/hive
+%{_moodledir}/sso/hive/*
 %dir %{_moodledir}/theme
 %{_moodledir}/theme/*
 %dir %{_moodledir}/user
