@@ -6,7 +6,7 @@ Summary:	Learning management system
 Summary(pl):	System zarz±dzania nauczaniem
 Name:		moodle
 Version:	1.6.3
-Release:	0.1
+Release:	0.2
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://download.moodle.org/stable16/%{name}-%{version}.tgz
@@ -14,13 +14,13 @@ Source0:	http://download.moodle.org/stable16/%{name}-%{version}.tgz
 Source1:	%{name}-http.conf
 Patch0:		%{name}-config.patch
 URL:		http://moodle.org/
-Requires:	php
-Requires:	php-gd
-Requires:	php-mysql
-Requires:	php-pcre
-Requires:	php-session
+Requires:	php(gd)
+Requires:	php(mysql)
+Requires:	php(pcre)
+Requires:	php(session)
 Requires:	webapps
 Requires:	webserver
+Requires:	webserver(php)
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
