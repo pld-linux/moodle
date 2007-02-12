@@ -3,7 +3,7 @@
 # - do sth with i386 binary in %{_datadir}
 #
 Summary:	Learning management system
-Summary(pl):	System zarz±dzania nauczaniem
+Summary(pl.UTF-8):   System zarzÄ…dzania nauczaniem
 Name:		moodle
 Version:	1.6.3
 Release:	0.2
@@ -43,19 +43,19 @@ commercial software such as WebCT or Blackboard, and is being used by
 a growing number of universities, schools, and independent teachers
 for distance education or to supplement face-to-face teaching.
 
-%description -l pl
-Moodle to system zarz±dzania nauczaniem do tworzenia internetowych
-serwisów z kursami. Jest napisany w PHP i ³atwy w instalacji oraz
-u¿ywaniu pod Linuksem, Windows, MacOS X, SunOS-em, BSD oraz Netware 6.
-Zosta³ zaprojektowany do obs³ugi nowoczesnej pedagogiki opartej na
-teorii konstrukcjonistów socjalnych, zawiera modu³y aktywno¶ci, takie
-jak fora, pogawêdki, zasoby, ¿urnale, quizy, przegl±dy, warsztaty,
-s³owniki, lekcje i ustalenia. Zosta³ przet³umaczony na ponad 36
-jêzyków, i ci±gle s± dodawane nowe. Moodle oferuje darmow± alternatywê
+%description -l pl.UTF-8
+Moodle to system zarzÄ…dzania nauczaniem do tworzenia internetowych
+serwisÃ³w z kursami. Jest napisany w PHP i Å‚atwy w instalacji oraz
+uÅ¼ywaniu pod Linuksem, Windows, MacOS X, SunOS-em, BSD oraz Netware 6.
+ZostaÅ‚ zaprojektowany do obsÅ‚ugi nowoczesnej pedagogiki opartej na
+teorii konstrukcjonistÃ³w socjalnych, zawiera moduÅ‚y aktywnoÅ›ci, takie
+jak fora, pogawÄ™dki, zasoby, Å¼urnale, quizy, przeglÄ…dy, warsztaty,
+sÅ‚owniki, lekcje i ustalenia. ZostaÅ‚ przetÅ‚umaczony na ponad 36
+jÄ™zykÃ³w, i ciÄ…gle sÄ… dodawane nowe. Moodle oferuje darmowÄ… alternatywÄ™
 dla oprogramowania komercyjnego, takiego jak WebCT czy Blackboard, i
-jest u¿ywany przez rosn±c± liczbê uniwersytetów, szkó³ oraz
-niezale¿nych nauczycieli do zdalnego nauczania lub uzupe³nienia
-nauczania bezpo¶redniego.
+jest uÅ¼ywany przez rosnÄ…cÄ… liczbÄ™ uniwersytetÃ³w, szkÃ³Å‚ oraz
+niezaleÅ¼nych nauczycieli do zdalnego nauczania lub uzupeÅ‚nienia
+nauczania bezpoÅ›redniego.
 
 %prep
 %setup -q -n %{name}
