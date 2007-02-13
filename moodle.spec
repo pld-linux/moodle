@@ -3,7 +3,7 @@
 # - do sth with i386 binary in %{_datadir}
 #
 Summary:	Learning management system
-Summary(pl.UTF-8):   System zarządzania nauczaniem
+Summary(pl.UTF-8):	System zarządzania nauczaniem
 Name:		moodle
 Version:	1.6.3
 Release:	0.2
