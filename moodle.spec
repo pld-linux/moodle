@@ -5,12 +5,12 @@
 Summary:	Learning management system
 Summary(pl.UTF-8):	System zarządzania nauczaniem
 Name:		moodle
-Version:	1.6.3
-Release:	0.2
+Version:	1.8.2
+Release:	0.1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
-Source0:	http://download.moodle.org/stable16/%{name}-%{version}.tgz
-# Source0-md5:	2f9f3fcf83ab0f18c409f3a48e07eae2
+Source0:	http://download.moodle.org/stable18/%{name}-%{version}.tgz
+# Source0-md5:	4e6afcfd567571af0638533d157f9181
 Source1:	%{name}-http.conf
 Patch0:		%{name}-config.patch
 URL:		http://moodle.org/
@@ -62,7 +62,7 @@ nauczania bezpośredniego.
 %patch0 -p1
 
 # Move docs into proper place:
-mv -f auth/README README_auth.txt
+mv -f auth/README.txt README_auth.txt
 mv -f auth/cas/README-CAS README_auth_CAS.txt
 mv -f auth/fc/Readme.txt README_auth_fc.txt
 mv -f auth/ldap/README-LDAP README_auth_LDAP.txt
