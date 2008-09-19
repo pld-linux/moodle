@@ -193,10 +193,13 @@ fi
 %dir %{_moodledir}/auth/imap
 %dir %{_moodledir}/auth/ldap
 %dir %{_moodledir}/auth/manual
+%dir %{_moodledir}/auth/mnet
 %dir %{_moodledir}/auth/nntp
+%dir %{_moodledir}/auth/nologin
 %dir %{_moodledir}/auth/none
 %dir %{_moodledir}/auth/pam
 %dir %{_moodledir}/auth/pop3
+%dir %{_moodledir}/auth/radius
 %dir %{_moodledir}/auth/shibboleth
 %{_moodledir}/auth/*.html
 %{_moodledir}/auth/*/*.php
@@ -411,6 +414,7 @@ fi
 %{_moodledir}/group/simpletest/*.php
 %dir %{_moodledir}/install
 %{_moodledir}/install/*.html
+%dir %{_moodledir}/install/lang
 %dir %{_moodledir}/install/lang/af_utf8
 %dir %{_moodledir}/install/lang/ar_utf8
 %dir %{_moodledir}/install/lang/be_utf8
@@ -429,6 +433,7 @@ fi
 %dir %{_moodledir}/install/lang/es
 %dir %{_moodledir}/install/lang/es_ar_utf8
 %dir %{_moodledir}/install/lang/es_es_utf8
+%dir %{_moodledir}/install/lang/es_mx_utf8
 %dir %{_moodledir}/install/lang/es_utf8
 %dir %{_moodledir}/install/lang/et_utf8
 %dir %{_moodledir}/install/lang/eu_utf8
