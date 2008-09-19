@@ -216,8 +216,9 @@ fi
 %dir %{_moodledir}/admin/settings
 %{_moodledir}/admin/settings/*.php
 %dir %{_moodledir}/admin/xmldb
-%{_moodledir}/admin/xmldb/actions/*.php
+%{_moodledir}/admin/xmldb/*.php
 %dir %{_moodledir}/admin/xmldb/actions
+%{_moodledir}/admin/xmldb/actions/*.php
 %dir %{_moodledir}/admin/xmldb/actions/check_indexes
 %{_moodledir}/admin/xmldb/actions/check_indexes/*.php
 %dir %{_moodledir}/admin/xmldb/actions/create_xml_file
@@ -237,100 +238,107 @@ fi
 %dir %{_moodledir}/admin/xmldb/actions/delete_xml_file
 %{_moodledir}/admin/xmldb/actions/delete_xml_file/*.php
 %dir %{_moodledir}/admin/xmldb/actions/edit_field
-%{_moodledir}/admin/xmldb/actions/edit_field/edit_field.class.php
-%{_moodledir}/admin/xmldb/actions/edit_field/edit_field.js
-%{_moodledir}/admin/xmldb/actions/edit_field_save/edit_field_save.class.php
+%{_moodledir}/admin/xmldb/actions/edit_field/*.php
+%{_moodledir}/admin/xmldb/actions/edit_field/*.js
+%{_moodledir}/admin/xmldb/actions/edit_field_save/*.php
 %dir %{_moodledir}/admin/xmldb/actions/edit_index
-%{_moodledir}/admin/xmldb/actions/edit_index/edit_index.class.php
-%{_moodledir}/admin/xmldb/actions/edit_index_save/edit_index_save.class.php
+%{_moodledir}/admin/xmldb/actions/edit_index/*.php
+%dir %{_moodledir}/admin/xmldb/actions/edit_index_save
+%{_moodledir}/admin/xmldb/actions/edit_index_save/*.php
 %dir %{_moodledir}/admin/xmldb/actions/edit_key
-%{_moodledir}/admin/xmldb/actions/edit_key/edit_key.class.php
-%{_moodledir}/admin/xmldb/actions/edit_key/edit_key.js
+%{_moodledir}/admin/xmldb/actions/edit_key/*.php
+%{_moodledir}/admin/xmldb/actions/edit_key/*.js
 %dir %{_moodledir}/admin/xmldb/actions/edit_key_save
-%{_moodledir}/admin/xmldb/actions/edit_key_save/edit_key_save.class.php
+%{_moodledir}/admin/xmldb/actions/edit_key_save/*.php
 %dir %{_moodledir}/admin/xmldb/actions/edit_sentence
-%{_moodledir}/admin/xmldb/actions/edit_sentence/edit_sentence.class.php
+%{_moodledir}/admin/xmldb/actions/edit_sentence/*.php
 %dir %{_moodledir}/admin/xmldb/actions/edit_sentence_save
-%{_moodledir}/admin/xmldb/actions/edit_sentence_save/edit_sentence_save.class.php
+%{_moodledir}/admin/xmldb/actions/edit_sentence_save/*.php
 %dir %{_moodledir}/admin/xmldb/actions/edit_statement
-%{_moodledir}/admin/xmldb/actions/edit_statement/edit_statement.class.php
+%{_moodledir}/admin/xmldb/actions/edit_statement/*.php
 %dir %{_moodledir}/admin/xmldb/actions/edit_statement_save
-%{_moodledir}/admin/xmldb/actions/edit_statement_save/edit_statement_save.class.php
+%{_moodledir}/admin/xmldb/actions/edit_statement_save/*.php
 %dir %{_moodledir}/admin/xmldb/actions/edit_table
-%{_moodledir}/admin/xmldb/actions/edit_table/edit_table.class.php
+%{_moodledir}/admin/xmldb/actions/edit_table/*.php
 %dir %{_moodledir}/admin/xmldb/actions/edit_table_save
-%{_moodledir}/admin/xmldb/actions/edit_table_save/edit_table_save.class.php
+%{_moodledir}/admin/xmldb/actions/edit_table_save/*.php
 %dir %{_moodledir}/admin/xmldb/actions/edit_xml_file
-%{_moodledir}/admin/xmldb/actions/edit_xml_file/edit_xml_file.class.php
+%{_moodledir}/admin/xmldb/actions/edit_xml_file/*.php
 %dir %{_moodledir}/admin/xmldb/actions/edit_xml_file_save
-%{_moodledir}/admin/xmldb/actions/edit_xml_file_save/edit_xml_file_save.class.php
+%{_moodledir}/admin/xmldb/actions/edit_xml_file_save/*.php
 %dir %{_moodledir}/admin/xmldb/actions/get_db_directories
-%{_moodledir}/admin/xmldb/actions/get_db_directories/get_db_directories.class.php
+%{_moodledir}/admin/xmldb/actions/get_db_directories/*.php
 %dir %{_moodledir}/admin/xmldb/actions/load_xml_file
-%{_moodledir}/admin/xmldb/actions/load_xml_file/load_xml_file.class.php
+%{_moodledir}/admin/xmldb/actions/load_xml_file/*.php
 %dir %{_moodledir}/admin/xmldb/actions/load_xml_files
-%{_moodledir}/admin/xmldb/actions/load_xml_files/load_xml_files.class.php
+%{_moodledir}/admin/xmldb/actions/load_xml_files/*.php
 %dir %{_moodledir}/admin/xmldb/actions/main_view
-%{_moodledir}/admin/xmldb/actions/main_view/main_view.class.php
+%{_moodledir}/admin/xmldb/actions/main_view/*.php
 %dir %{_moodledir}/admin/xmldb/actions/move_updown_field
-%{_moodledir}/admin/xmldb/actions/move_updown_field/move_updown_field.class.php
+%{_moodledir}/admin/xmldb/actions/move_updown_field/*.php
 %dir %{_moodledir}/admin/xmldb/actions/move_updown_index
-%{_moodledir}/admin/xmldb/actions/move_updown_index/move_updown_index.class.php
+%{_moodledir}/admin/xmldb/actions/move_updown_index/*.php
 %dir %{_moodledir}/admin/xmldb/actions/move_updown_key
-%{_moodledir}/admin/xmldb/actions/move_updown_key/move_updown_key.class.php
+%{_moodledir}/admin/xmldb/actions/move_updown_key/*.php
 %dir %{_moodledir}/admin/xmldb/actions/move_updown_statement
-%{_moodledir}/admin/xmldb/actions/move_updown_statement/move_updown_statement.class.php
+%{_moodledir}/admin/xmldb/actions/move_updown_statement/*.php
 %dir %{_moodledir}/admin/xmldb/actions/move_updown_table
-%{_moodledir}/admin/xmldb/actions/move_updown_table/move_updown_table.class.php
+%{_moodledir}/admin/xmldb/actions/move_updown_table/*.php
 %dir %{_moodledir}/admin/xmldb/actions/new_field
-%{_moodledir}/admin/xmldb/actions/new_field/new_field.class.php
+%{_moodledir}/admin/xmldb/actions/new_field/*.php
 %dir %{_moodledir}/admin/xmldb/actions/new_index
-%{_moodledir}/admin/xmldb/actions/new_index/new_index.class.php
+%{_moodledir}/admin/xmldb/actions/new_index/*.php
 %dir %{_moodledir}/admin/xmldb/actions/new_key
-%{_moodledir}/admin/xmldb/actions/new_key/new_key.class.php
+%{_moodledir}/admin/xmldb/actions/new_key/*.php
 %dir %{_moodledir}/admin/xmldb/actions/new_sentence
-%{_moodledir}/admin/xmldb/actions/new_sentence/new_sentence.class.php
+%{_moodledir}/admin/xmldb/actions/new_sentence/*.php
 %dir %{_moodledir}/admin/xmldb/actions/new_statement
-%{_moodledir}/admin/xmldb/actions/new_statement/new_statement.class.php
+%{_moodledir}/admin/xmldb/actions/new_statement/*.php
 %dir %{_moodledir}/admin/xmldb/actions/new_table
-%{_moodledir}/admin/xmldb/actions/new_table/new_table.class.php
+%{_moodledir}/admin/xmldb/actions/new_table/*.php
 %dir %{_moodledir}/admin/xmldb/actions/new_table_from_mysql
-%{_moodledir}/admin/xmldb/actions/new_table_from_mysql/new_table_from_mysql.class.php
+%{_moodledir}/admin/xmldb/actions/new_table_from_mysql/*.php
 %dir %{_moodledir}/admin/xmldb/actions/revert_changes
-%{_moodledir}/admin/xmldb/actions/revert_changes/revert_changes.class.php
+%{_moodledir}/admin/xmldb/actions/revert_changes/*.php
 %dir %{_moodledir}/admin/xmldb/actions/save_xml_file
-%{_moodledir}/admin/xmldb/actions/save_xml_file/save_xml_file.class.php
+%{_moodledir}/admin/xmldb/actions/save_xml_file/*.php
 %dir %{_moodledir}/admin/xmldb/actions/template
-%{_moodledir}/admin/xmldb/actions/template/template.class.php
+%{_moodledir}/admin/xmldb/actions/template/*.php
 %dir %{_moodledir}/admin/xmldb/actions/test
-%{_moodledir}/admin/xmldb/actions/test/test.class.php
+%{_moodledir}/admin/xmldb/actions/test/*.php
 %dir %{_moodledir}/admin/xmldb/actions/unload_xml_file
-%{_moodledir}/admin/xmldb/actions/unload_xml_file/unload_xml_file.class.php
+%{_moodledir}/admin/xmldb/actions/unload_xml_file/*.php
 %dir %{_moodledir}/admin/xmldb/actions/view_field_xml
-%{_moodledir}/admin/xmldb/actions/view_field_xml/view_field_xml.class.php
+%{_moodledir}/admin/xmldb/actions/view_field_xml/*.php
 %dir %{_moodledir}/admin/xmldb/actions/view_index_xml
-%{_moodledir}/admin/xmldb/actions/view_index_xml/view_index_xml.class.php
+%{_moodledir}/admin/xmldb/actions/view_index_xml/*.php
 %dir %{_moodledir}/admin/xmldb/actions/view_key_xml
-%{_moodledir}/admin/xmldb/actions/view_key_xml/view_key_xml.class.php
+%{_moodledir}/admin/xmldb/actions/view_key_xml/*.php
 %dir %{_moodledir}/admin/xmldb/actions/view_reserved_words
-%{_moodledir}/admin/xmldb/actions/view_reserved_words/view_reserved_words.class.php
+%{_moodledir}/admin/xmldb/actions/view_reserved_words/*.php
 %dir %{_moodledir}/admin/xmldb/actions/view_statement_xml
-%{_moodledir}/admin/xmldb/actions/view_statement_xml/view_statement_xml.class.php
+%{_moodledir}/admin/xmldb/actions/view_statement_xml/*.php
 %dir %{_moodledir}/admin/xmldb/actions/view_structure_php
-%{_moodledir}/admin/xmldb/actions/view_structure_php/view_structure_php.class.php
+%{_moodledir}/admin/xmldb/actions/view_structure_php/*.php
 %dir %{_moodledir}/admin/xmldb/actions/view_structure_sql
-%{_moodledir}/admin/xmldb/actions/view_structure_sql/view_structure_sql.class.php
+%{_moodledir}/admin/xmldb/actions/view_structure_sql/*.php
 %dir %{_moodledir}/admin/xmldb/actions/view_structure_xml
-%{_moodledir}/admin/xmldb/actions/view_structure_xml/view_structure_xml.class.php
+%{_moodledir}/admin/xmldb/actions/view_structure_xml/*.php
 %dir %{_moodledir}/admin/xmldb/actions/view_table_php
-%{_moodledir}/admin/xmldb/actions/view_table_php/view_table_php.class.php
-%{_moodledir}/admin/xmldb/actions/view_table_php/view_table_php.js
+%{_moodledir}/admin/xmldb/actions/view_table_php/*.php
+%{_moodledir}/admin/xmldb/actions/view_table_php/*.js
 %dir %{_moodledir}/admin/xmldb/actions/view_table_sql
-%{_moodledir}/admin/xmldb/actions/view_table_sql/view_table_sql.class.php
+%{_moodledir}/admin/xmldb/actions/view_table_sql/*.php
 %dir %{_moodledir}/admin/xmldb/actions/view_table_xml
-%{_moodledir}/admin/xmldb/actions/view_table_xml/view_table_xml.class.php
+%{_moodledir}/admin/xmldb/actions/view_table_xml/*.php
 %dir %{_moodledir}/admin/xmldb/actions/view_xml
-%{_moodledir}/admin/xmldb/actions/view_xml/view_xml.class.php
+%{_moodledir}/admin/xmldb/actions/view_xml/*.php
+%dir %{_moodledir}/auth/cas/CAS/
+%{_moodledir}/auth/cas/CAS/*.php
+%dir %{_moodledir}/auth/cas/CAS/PGTStorage
+%{_moodledir}/auth/cas/CAS/PGTStorage/*.php
+%dir %{_moodledir}/auth/cas/CAS/languages
+%{_moodledir}/auth/cas/CAS/languages/*.php
 %dir %{_moodledir}/backup
 %{_moodledir}/backup/*.html
 %{_moodledir}/backup/*.php
@@ -388,6 +396,15 @@ fi
 %{_moodledir}/filter/mediaplugin/flvplayer.fla.zip
 %dir %{_moodledir}/grade
 %{_moodledir}/grade/*
+%dir %{_moodledir}/group
+%{_moodledir}/group/*.php
+%dir %{_moodledir}/group/db
+%{_moodledir}/group/db/*.php
+%dir %{_moodledir}/group/lib
+%{_moodledir}/group/lib/*.php
+%dir %{_moodledir}/install
+%{_moodledir}/install/*.html
+%dir %{_moodledir}/install/lang/*/*.*
 %dir %{_moodledir}/iplookup
 %dir %{_moodledir}/iplookup/hostip
 %dir %{_moodledir}/iplookup/ipatlas
@@ -413,6 +430,8 @@ fi
 %{_moodledir}/message/*
 %dir %{_moodledir}/mnet
 %{_moodledir}/mnet/*.php
+%dir %{_moodledir}/mnet/xmlrpc
+%{_moodledir}/mnet/xmlrpc/*.php
 %dir %{_moodledir}/mod
 %dir %{_moodledir}/mod/*
 %{_moodledir}/mod/*/*
@@ -483,6 +502,11 @@ fi
 %{_moodledir}/user/default/*.jpg
 %{_moodledir}/user/default/*.txt
 %dir %{_moodledir}/user/profile
+%{_moodledir}/user/profile/*.php
+%dir %{_moodledir}/user/profile/field/menu
+%{_moodledir}/user/profile/field/menu/*.php
+%dir %{_moodledir}/user/profile/field/text
+%{_moodledir}/user/profile/field/text/*.php
 %dir %{_moodledir}/userpix
 %{_moodledir}/userpix/*.php
 %attr(771,root,http) %dir %{_moodledata}
