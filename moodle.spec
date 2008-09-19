@@ -394,14 +394,20 @@ fi
 # Is it needed? Maybe doc?
 %{_moodledir}/filter/mediaplugin/mp3player.fla.zip
 %{_moodledir}/filter/mediaplugin/flvplayer.fla.zip
+%{_moodledir}/filter/mediaplugin/*.js
 %dir %{_moodledir}/grade
 %{_moodledir}/grade/*
 %dir %{_moodledir}/group
 %{_moodledir}/group/*.php
 %dir %{_moodledir}/group/db
 %{_moodledir}/group/db/*.php
+%{_moodledir}/group/db/install.xml
+%{_moodledir}/group/db/vssver.scc
 %dir %{_moodledir}/group/lib
 %{_moodledir}/group/lib/*.php
+%{_moodledir}/group/lib/*.js
+%dir %{_moodledir}/group/simpletest
+%{_moodledir}/group/simpletest/*.php
 %dir %{_moodledir}/install
 %{_moodledir}/install/*.html
 %dir %{_moodledir}/install/lang/*/*.*
@@ -479,6 +485,10 @@ fi
 %{_moodledir}/question/type/*/*.html
 %{_moodledir}/question/type/*/*.gif
 %{_moodledir}/question/type/*/db/*
+%dir %{_moodledir}/question/type/numerical/simpletest
+%{_moodledir}/question/type/numerical/simpletest/*.php
+%dir %{_moodledir}/question/type/shortanswer/simpletest
+%{_moodledir}/question/type/shortanswer/simpletest/*.php
 %{_moodledir}/question/format/*/*.xml
 %{_moodledir}/question/format/*/*.txt
 %{_moodledir}/question/format/*/*.php
@@ -490,6 +500,52 @@ fi
 %{_moodledir}/search/*.php
 %dir %{_moodledir}/search/documents
 %{_moodledir}/search/documents/*.php
+%dir %{_moodledir}/search/tests
+%{_moodledir}/search/tests/*.php
+%dir %{_moodledir}/search/Zend
+%{_moodledir}/search/Zend/*.php
+%dir %{_moodledir}/search/Zend/Search
+%{_moodledir}/search/Zend/Search/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene
+%{_moodledir}/search/Zend/Search/Lucene/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Analysis
+%{_moodledir}/search/Zend/Search/Lucene/Analysis/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Analysis/TokenFilter
+%{_moodledir}/search/Zend/Search/Lucene/Analysis/TokenFilter/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Analysis/Analyzer
+%{_moodledir}/search/Zend/Search/Lucene/Analysis/Analyzer/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Analysis/Analyzer/Common
+%{_moodledir}/search/Zend/Search/Lucene/Analysis/Analyzer/Common/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Analysis/Analyzer/Common/Text
+%{_moodledir}/search/Zend/Search/Lucene/Analysis/Analyzer/Common/Text/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Analysis/Analyzer/Common/TextNum
+%{_moodledir}/search/Zend/Search/Lucene/Analysis/Analyzer/Common/TextNum/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Analysis/Analyzer/Common/Utf8
+%{_moodledir}/search/Zend/Search/Lucene/Analysis/Analyzer/Common/Utf8/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Analysis/Analyzer/Common/Utf8Num
+%{_moodledir}/search/Zend/Search/Lucene/Analysis/Analyzer/Common/Utf8Num/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Document
+%{_moodledir}/search/Zend/Search/Lucene/Document/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Index
+%{_moodledir}/search/Zend/Search/Lucene/Index/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Index/SegmentWriter
+%{_moodledir}/search/Zend/Search/Lucene/Index/SegmentWriter/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Search
+%{_moodledir}/search/Zend/Search/Lucene/Search/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Search/Query
+%{_moodledir}/search/Zend/Search/Lucene/Search/Query/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Search/QueryEntry
+%{_moodledir}/search/Zend/Search/Lucene/Search/QueryEntry/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Search/Similarity
+%{_moodledir}/search/Zend/Search/Lucene/Search/Similarity/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Search/Weight
+%{_moodledir}/search/Zend/Search/Lucene/Search/Weight/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Storage
+%{_moodledir}/search/Zend/Search/Lucene/Storage/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Storage/Directory
+%{_moodledir}/search/Zend/Search/Lucene/Storage/Directory/*.php
+%dir %{_moodledir}/search/Zend/Search/Lucene/Storage/File
+%{_moodledir}/search/Zend/Search/Lucene/Storage/File/*.php
 %dir %{_moodledir}/sso
 %dir %{_moodledir}/sso/hive
 %{_moodledir}/sso/hive/*
