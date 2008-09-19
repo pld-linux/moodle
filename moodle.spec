@@ -6,7 +6,7 @@ Summary:	Learning management system
 Summary(pl.UTF-8):	System zarządzania nauczaniem
 Name:		moodle
 Version:	1.8.6
-Release:	0.1
+Release:	0.2
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://download.moodle.org/stable18/%{name}-%{version}.tgz
@@ -240,6 +240,7 @@ fi
 %dir %{_moodledir}/admin/xmldb/actions/edit_field
 %{_moodledir}/admin/xmldb/actions/edit_field/*.php
 %{_moodledir}/admin/xmldb/actions/edit_field/*.js
+%dir %{_moodledir}/admin/xmldb/actions/edit_field_save
 %{_moodledir}/admin/xmldb/actions/edit_field_save/*.php
 %dir %{_moodledir}/admin/xmldb/actions/edit_index
 %{_moodledir}/admin/xmldb/actions/edit_index/*.php
@@ -410,7 +411,90 @@ fi
 %{_moodledir}/group/simpletest/*.php
 %dir %{_moodledir}/install
 %{_moodledir}/install/*.html
-%dir %{_moodledir}/install/lang/*/*.*
+%dir %{_moodledir}/install/lang/af_utf8
+%dir %{_moodledir}/install/lang/ar_utf8
+%dir %{_moodledir}/install/lang/be_utf8
+%dir %{_moodledir}/install/lang/bg_utf8
+%dir %{_moodledir}/install/lang/bs_utf8
+%dir %{_moodledir}/install/lang/ca_utf8
+%dir %{_moodledir}/install/lang/cs_utf8
+%dir %{_moodledir}/install/lang/cy_utf8
+%dir %{_moodledir}/install/lang/da_utf8
+%dir %{_moodledir}/install/lang/de_du_utf8
+%dir %{_moodledir}/install/lang/de_utf8
+%dir %{_moodledir}/install/lang/el_utf8
+%dir %{_moodledir}/install/lang/en
+%dir %{_moodledir}/install/lang/en_us_utf8
+%dir %{_moodledir}/install/lang/en_utf8
+%dir %{_moodledir}/install/lang/es
+%dir %{_moodledir}/install/lang/es_ar_utf8
+%dir %{_moodledir}/install/lang/es_es_utf8
+%dir %{_moodledir}/install/lang/es_utf8
+%dir %{_moodledir}/install/lang/et_utf8
+%dir %{_moodledir}/install/lang/eu_utf8
+%dir %{_moodledir}/install/lang/fa_utf8
+%dir %{_moodledir}/install/lang/fi_utf8
+%dir %{_moodledir}/install/lang/fil_utf8
+%dir %{_moodledir}/install/lang/fr_ca_utf8
+%dir %{_moodledir}/install/lang/fr_utf8
+%dir %{_moodledir}/install/lang/ga_utf8
+%dir %{_moodledir}/install/lang/gl_utf8
+%dir %{_moodledir}/install/lang/gu_utf8
+%dir %{_moodledir}/install/lang/he_utf8
+%dir %{_moodledir}/install/lang/hi_utf8
+%dir %{_moodledir}/install/lang/hr_utf8
+%dir %{_moodledir}/install/lang/hu_utf8
+%dir %{_moodledir}/install/lang/hy_utf8
+%dir %{_moodledir}/install/lang/id_utf8
+%dir %{_moodledir}/install/lang/is_utf8
+%dir %{_moodledir}/install/lang/it_utf8
+%dir %{_moodledir}/install/lang/ja_utf8
+%dir %{_moodledir}/install/lang/ka_utf8
+%dir %{_moodledir}/install/lang/km_utf8
+%dir %{_moodledir}/install/lang/kn_utf8
+%dir %{_moodledir}/install/lang/ko_utf8
+%dir %{_moodledir}/install/lang/la_utf8
+%dir %{_moodledir}/install/lang/lo_utf8
+%dir %{_moodledir}/install/lang/lt_utf8
+%dir %{_moodledir}/install/lang/lv_utf8
+%dir %{_moodledir}/install/lang/mi_tn_utf8
+%dir %{_moodledir}/install/lang/mi_wwow_utf8
+%dir %{_moodledir}/install/lang/mk_utf8
+%dir %{_moodledir}/install/lang/ml_utf8
+%dir %{_moodledir}/install/lang/mn_utf8
+%dir %{_moodledir}/install/lang/ms_utf8
+%dir %{_moodledir}/install/lang/nl_utf8
+%dir %{_moodledir}/install/lang/nn_utf8
+%dir %{_moodledir}/install/lang/no_gr_utf8
+%dir %{_moodledir}/install/lang/no_utf8
+%dir %{_moodledir}/install/lang/pl_utf8
+%dir %{_moodledir}/install/lang/pt_br_utf8
+%dir %{_moodledir}/install/lang/pt_utf8
+%dir %{_moodledir}/install/lang/ro_utf8
+%dir %{_moodledir}/install/lang/ru_utf8
+%dir %{_moodledir}/install/lang/si_utf8
+%dir %{_moodledir}/install/lang/sk_utf8
+%dir %{_moodledir}/install/lang/sl_utf8
+%dir %{_moodledir}/install/lang/sm_utf8
+%dir %{_moodledir}/install/lang/so_utf8
+%dir %{_moodledir}/install/lang/sq_utf8
+%dir %{_moodledir}/install/lang/sr_cr_bo_utf8
+%dir %{_moodledir}/install/lang/sr_cr_utf8
+%dir %{_moodledir}/install/lang/sr_lt_utf8
+%dir %{_moodledir}/install/lang/sr_utf8
+%dir %{_moodledir}/install/lang/sv_utf8
+%dir %{_moodledir}/install/lang/ta_lk_utf8
+%dir %{_moodledir}/install/lang/ta_utf8
+%dir %{_moodledir}/install/lang/th_utf8
+%dir %{_moodledir}/install/lang/tl_utf8
+%dir %{_moodledir}/install/lang/to_utf8
+%dir %{_moodledir}/install/lang/tr_utf8
+%dir %{_moodledir}/install/lang/uk_utf8
+%dir %{_moodledir}/install/lang/uz_utf8
+%dir %{_moodledir}/install/lang/vi_utf8
+%dir %{_moodledir}/install/lang/zh_cn_utf8
+%dir %{_moodledir}/install/lang/zh_tw_utf8
+%{_moodledir}/install/lang/*/*.php
 %dir %{_moodledir}/iplookup
 %dir %{_moodledir}/iplookup/hostip
 %dir %{_moodledir}/iplookup/ipatlas
@@ -559,6 +643,7 @@ fi
 %{_moodledir}/user/default/*.txt
 %dir %{_moodledir}/user/profile
 %{_moodledir}/user/profile/*.php
+%dir %{_moodledir}/user/profile/field/
 %dir %{_moodledir}/user/profile/field/menu
 %{_moodledir}/user/profile/field/menu/*.php
 %dir %{_moodledir}/user/profile/field/text
