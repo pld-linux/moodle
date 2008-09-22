@@ -5,12 +5,12 @@
 Summary:	Learning management system
 Summary(pl.UTF-8):	System zarządzania nauczaniem
 Name:		moodle
-Version:	1.8.6
-Release:	0.2
+Version:	1.9.2
+Release:	0.1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
-Source0:	http://download.moodle.org/stable18/%{name}-%{version}.tgz
-# Source0-md5:	ebe4010c4bacefb571737ad9b0519d65
+Source0:	http://download.moodle.org/stable19/%{name}-%{version}.tgz
+# Source0-md5:	514976e963f71f43e0a8f7aabe932d6d
 Source1:	%{name}-http.conf
 Patch0:		%{name}-config.patch
 URL:		http://moodle.org/
@@ -76,16 +76,12 @@ mv -f auth/ldap/README-LDAP README_auth_LDAP.txt
 mv -f auth/shibboleth/README.txt README_auth_shibboleth.txt
 mv -f backup/bb/README.txt README_bb.txt
 mv -f blog/README.txt README_blog.txt
-mv -f blog/TODO.txt TODO_blog.txt
 mv -f course/format/README.txt README_course_format.txt
 mv -f filter/censor/README.txt README_filter_censor.txt
 mv -f filter/mediaplugin/flvplayer.README.txt README_fliter_flvplayer.txt
 mv -f filter/multilang/README.txt README_filter_multilang.txt
 mv -f filter/tex/README.mimetex README_filter_tex_mimetex.txt
 mv -f iplookup/README.txt README_iplookup.txt
-mv -f iplookup/ipatlas/README README_iplookup_ipatlas.txt
-mv -f iplookup/ipatlas/MOODLECHANGES MOODLECHANGES_iplookup_ipatlas.txt
-mv -f iplookup/ipatlas/README.MOODLE.txt README_MOODLE_iplookup_ipatlas.txt
 mv -f lang/README.txt README_lang.txt
 mv -f mod/README.txt README_mod.txt
 mv -f mod/chat/README.txt README_mod_chat.txt
@@ -225,10 +221,14 @@ fi
 %{_moodledir}/admin/report/*/*.php
 %dir %{_moodledir}/admin/settings
 %{_moodledir}/admin/settings/*.php
+%dir %{_moodledir}/admin/user
+%{_moodledir}/admin/user/*.php
 %dir %{_moodledir}/admin/xmldb
 %{_moodledir}/admin/xmldb/*.php
 %dir %{_moodledir}/admin/xmldb/actions
 %{_moodledir}/admin/xmldb/actions/*.php
+%dir %{_moodledir}/admin/xmldb/actions/check_bigints
+%{_moodledir}/admin/xmldb/actions/check_bigints/*.php
 %dir %{_moodledir}/admin/xmldb/actions/check_indexes
 %{_moodledir}/admin/xmldb/actions/check_indexes/*.php
 %dir %{_moodledir}/admin/xmldb/actions/create_xml_file
@@ -396,7 +396,7 @@ fi
 %{_moodledir}/files/*.php
 %dir %{_moodledir}/filter
 %dir %{_moodledir}/filter/*
-%{_moodledir}/filter/*/*.html
+#%{_moodledir}/filter/*/*.html
 %{_moodledir}/filter/*/*.php
 %{_moodledir}/filter/*/*.pl
 %{_moodledir}/filter/*/*.pm
@@ -410,15 +410,16 @@ fi
 %{_moodledir}/grade/*
 %dir %{_moodledir}/group
 %{_moodledir}/group/*.php
-%dir %{_moodledir}/group/db
-%{_moodledir}/group/db/*.php
-%{_moodledir}/group/db/install.xml
-%{_moodledir}/group/db/vssver.scc
-%dir %{_moodledir}/group/lib
-%{_moodledir}/group/lib/*.php
-%{_moodledir}/group/lib/*.js
-%dir %{_moodledir}/group/simpletest
-%{_moodledir}/group/simpletest/*.php
+%{_moodledir}/group/*.js
+#%dir %{_moodledir}/group/db
+#{_moodledir}/group/db/*.php
+#{_moodledir}/group/db/install.xml
+#{_moodledir}/group/db/vssver.scc
+#%dir %{_moodledir}/group/lib
+#%{_moodledir}/group/lib/*.php
+#%{_moodledir}/group/lib/*.js
+#%dir %{_moodledir}/group/simpletest
+#%{_moodledir}/group/simpletest/*.php
 %dir %{_moodledir}/install
 %{_moodledir}/install/*.html
 %dir %{_moodledir}/install/lang
@@ -508,18 +509,21 @@ fi
 %dir %{_moodledir}/install/lang/zh_tw_utf8
 %{_moodledir}/install/lang/*/*.php
 %dir %{_moodledir}/iplookup
-%dir %{_moodledir}/iplookup/hostip
-%dir %{_moodledir}/iplookup/ipatlas
-%dir %{_moodledir}/iplookup/ipatlas/languages
+%{_moodledir}/iplookup/*.gif
+%{_moodledir}/iplookup/*.jpeg
 %{_moodledir}/iplookup/*.php
-%{_moodledir}/iplookup/hostip/*.php
-%{_moodledir}/iplookup/ipatlas/*.inc
-%{_moodledir}/iplookup/ipatlas/*.txt
-%{_moodledir}/iplookup/ipatlas/*.jpg
-%{_moodledir}/iplookup/ipatlas/*.gif
-%{_moodledir}/iplookup/ipatlas/*.php
-%{_moodledir}/iplookup/ipatlas/*.css
-%{_moodledir}/iplookup/ipatlas/languages/*.inc
+#%dir %{_moodledir}/iplookup/hostip
+#%dir %{_moodledir}/iplookup/ipatlas
+#%dir %{_moodledir}/iplookup/ipatlas/languages
+#%{_moodledir}/iplookup/*.php
+#%{_moodledir}/iplookup/hostip/*.php
+#%{_moodledir}/iplookup/ipatlas/*.inc
+#%{_moodledir}/iplookup/ipatlas/*.txt
+#%{_moodledir}/iplookup/ipatlas/*.jpg
+#%{_moodledir}/iplookup/ipatlas/*.gif
+#%{_moodledir}/iplookup/ipatlas/*.php
+#%{_moodledir}/iplookup/ipatlas/*.css
+#%{_moodledir}/iplookup/ipatlas/languages/*.inc
 %dir %{_moodledir}/lang
 %dir %{_moodledir}/lang/*
 %{_moodledir}/lang/*/*
@@ -539,6 +543,8 @@ fi
 %{_moodledir}/mod/*/*
 %dir %{_moodledir}/my
 %{_moodledir}/my/*.php
+%dir %{_moodledir}/notes
+%{_moodledir}/notes/*.php
 %dir %{_moodledir}/pix
 %{_moodledir}/pix/*.gif
 %{_moodledir}/pix/*.png
@@ -571,7 +577,6 @@ fi
 %dir %{_moodledir}/question/type/numerical
 %dir %{_moodledir}/question/type/random
 %dir %{_moodledir}/question/type/randomsamatch
-%dir %{_moodledir}/question/type/rqp
 %dir %{_moodledir}/question/type/shortanswer
 %dir %{_moodledir}/question/type/truefalse
 %dir %{_moodledir}/question/type/*/db
@@ -645,6 +650,8 @@ fi
 %dir %{_moodledir}/sso
 %dir %{_moodledir}/sso/hive
 %{_moodledir}/sso/hive/*
+%dir %{_moodledir}/tag
+%{_moodledir}/tag/*.php
 %dir %{_moodledir}/theme
 %{_moodledir}/theme/*
 %dir %{_moodledir}/user
@@ -653,6 +660,8 @@ fi
 %dir %{_moodledir}/user/default
 %{_moodledir}/user/default/*.jpg
 %{_moodledir}/user/default/*.txt
+%dir %{_moodledir}/user/filters
+%{_moodledir}/user/filters/*.php
 %dir %{_moodledir}/user/profile
 %{_moodledir}/user/profile/*.php
 %dir %{_moodledir}/user/profile/field/
@@ -660,6 +669,8 @@ fi
 %{_moodledir}/user/profile/field/menu/*.php
 %dir %{_moodledir}/user/profile/field/text
 %{_moodledir}/user/profile/field/text/*.php
+%dir %{_moodledir}/user/profile/field/textarea
+%{_moodledir}/user/profile/field/textarea/*.php
 %dir %{_moodledir}/userpix
 %{_moodledir}/userpix/*.php
 %attr(771,root,http) %dir %{_moodledata}
