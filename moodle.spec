@@ -6,7 +6,7 @@ Summary:	Learning management system
 Summary(pl.UTF-8):	System zarządzania nauczaniem
 Name:		moodle
 Version:	1.9.2
-Release:	0.1
+Release:	1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://download.moodle.org/stable19/%{name}-%{version}.tgz
@@ -381,14 +381,6 @@ fi
 %dir %{_moodledir}/course/report
 %dir %{_moodledir}/course/report/*
 %{_moodledir}/course/report/*/*.php
-#%dir %{_moodledir}/doc
-#%{_moodledir}/doc/*.css
-#%{_moodledir}/doc/*.html
-#%{_moodledir}/doc/*.php
-#%dir %{_moodledir}/doc/pix
-#%{_moodledir}/doc/pix/*.jpg
-#%{_moodledir}/doc/pix/*.png
-#dir %{_moodledir}/enrol
 %{_moodledir}/enrol/
 %dir %{_moodledir}/error/
 %{_moodledir}/error/index.php
@@ -396,7 +388,6 @@ fi
 %{_moodledir}/files/*.php
 %dir %{_moodledir}/filter
 %dir %{_moodledir}/filter/*
-#%{_moodledir}/filter/*/*.html
 %{_moodledir}/filter/*/*.php
 %{_moodledir}/filter/*/*.pl
 %{_moodledir}/filter/*/*.pm
@@ -512,18 +503,6 @@ fi
 %{_moodledir}/iplookup/*.gif
 %{_moodledir}/iplookup/*.jpeg
 %{_moodledir}/iplookup/*.php
-#%dir %{_moodledir}/iplookup/hostip
-#%dir %{_moodledir}/iplookup/ipatlas
-#%dir %{_moodledir}/iplookup/ipatlas/languages
-#%{_moodledir}/iplookup/*.php
-#%{_moodledir}/iplookup/hostip/*.php
-#%{_moodledir}/iplookup/ipatlas/*.inc
-#%{_moodledir}/iplookup/ipatlas/*.txt
-#%{_moodledir}/iplookup/ipatlas/*.jpg
-#%{_moodledir}/iplookup/ipatlas/*.gif
-#%{_moodledir}/iplookup/ipatlas/*.php
-#%{_moodledir}/iplookup/ipatlas/*.css
-#%{_moodledir}/iplookup/ipatlas/languages/*.inc
 %dir %{_moodledir}/lang
 %dir %{_moodledir}/lang/*
 %{_moodledir}/lang/*/*
