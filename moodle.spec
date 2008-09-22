@@ -21,6 +21,13 @@ Requires:	php(session)
 Requires:	webapps
 Requires:	webserver
 Requires:	webserver(php)
+Suggests:	php-ctype
+Suggests:	php-curl
+Suggests:	php-iconv
+Suggests:	php-mbstring
+Suggests:	php-openssl
+Suggests:	php-tokenizer
+Suggests:	php-xmlrpc
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
