@@ -5,12 +5,12 @@
 Summary:	Learning management system
 Summary(pl.UTF-8):	System zarządzania nauczaniem
 Name:		moodle
-Version:	1.9.2
+Version:	1.9.3
 Release:	1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://download.moodle.org/stable19/%{name}-%{version}.tgz
-# Source0-md5:	514976e963f71f43e0a8f7aabe932d6d
+# Source0-md5:	f14a276ea01e936a4b58872507908e00
 Source1:	%{name}-http.conf
 Patch0:		%{name}-config.patch
 URL:		http://moodle.org/
@@ -381,6 +381,8 @@ fi
 %dir %{_moodledir}/course/report
 %dir %{_moodledir}/course/report/*
 %{_moodledir}/course/report/*/*.php
+%dir %{_moodledir}/course/simpletest
+%{_moodledir}/course/simpletest/testcourselib.php
 %{_moodledir}/enrol/
 %dir %{_moodledir}/error/
 %{_moodledir}/error/index.php
@@ -397,6 +399,7 @@ fi
 %{_moodledir}/filter/mediaplugin/mp3player.fla.zip
 %{_moodledir}/filter/mediaplugin/flvplayer.fla.zip
 %{_moodledir}/filter/mediaplugin/*.js
+%{_moodledir}/filter/tex/mimetex.freebsd
 %dir %{_moodledir}/grade
 %{_moodledir}/grade/*
 %dir %{_moodledir}/group
@@ -644,6 +647,8 @@ fi
 %dir %{_moodledir}/user/profile
 %{_moodledir}/user/profile/*.php
 %dir %{_moodledir}/user/profile/field/
+%dir %{_moodledir}/user/profile/field/checkbox
+%{_moodledir}/user/profile/field/checkbox/*.php
 %dir %{_moodledir}/user/profile/field/menu
 %{_moodledir}/user/profile/field/menu/*.php
 %dir %{_moodledir}/user/profile/field/text
