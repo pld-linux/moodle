@@ -5,12 +5,12 @@
 Summary:	Learning management system
 Summary(pl.UTF-8):	System zarządzania nauczaniem
 Name:		moodle
-Version:	1.9.3
-Release:	2
+Version:	1.9.5
+Release:	1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://download.moodle.org/stable19/%{name}-%{version}.tgz
-# Source0-md5:	f14a276ea01e936a4b58872507908e00
+# Source0-md5:	41a3258c2f09dbc7b36fec960bcf4e19
 Source1:	%{name}-http.conf
 Patch0:		%{name}-config.patch
 URL:		http://moodle.org/
@@ -218,7 +218,9 @@ fi
 %{_moodledir}/admin/roles/*.php
 %dir %{_moodledir}/admin/report
 %dir %{_moodledir}/admin/report/*
+%dir %{_moodledir}/admin/report/*/db
 %{_moodledir}/admin/report/*/*.php
+%{_moodledir}/admin/report/*/db/access.php
 %dir %{_moodledir}/admin/settings
 %{_moodledir}/admin/settings/*.php
 %dir %{_moodledir}/admin/user
@@ -380,7 +382,9 @@ fi
 %{_moodledir}/course/import/*/*.php
 %dir %{_moodledir}/course/report
 %dir %{_moodledir}/course/report/*
+%dir %{_moodledir}/course/report/*/db
 %{_moodledir}/course/report/*/*.php
+%{_moodledir}/course/report/*/db/access.php
 %dir %{_moodledir}/course/simpletest
 %{_moodledir}/course/simpletest/testcourselib.php
 %{_moodledir}/enrol/
