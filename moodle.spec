@@ -1,17 +1,19 @@
 # TODO:
 # - mark i18n content as lang()
-# - do sth with i386 binary in %{_datadir}
+# - do sth with binary in %{_datadir}
 #
 Summary:	Learning management system
 Summary(pl.UTF-8):	System zarządzania nauczaniem
 Name:		moodle
 Version:	1.9.5
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://download.moodle.org/stable19/%{name}-%{version}.tgz
 # Source0-md5:	41a3258c2f09dbc7b36fec960bcf4e19
-Source1:	%{name}-http.conf
+Source1:	http://www.forkosh.com/mimetex.zip
+# Source1-md5:	9c05d4a3e3fae1242caa7f7a5f65c015
+Source2:	%{name}-http.conf
 Patch0:		%{name}-config.patch
 URL:		http://moodle.org/
 Requires:	php(gd)
@@ -28,6 +30,7 @@ Suggests:	php-mbstring
 Suggests:	php-openssl
 Suggests:	php-tokenizer
 Suggests:	php-xmlrpc
+BuildRequires:	unzip
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -67,6 +70,8 @@ nauczania bezpośredniego.
 %prep
 %setup -q -n %{name}
 %patch0 -p1
+mkdir mimetex
+unzip %{SOURCE1} -d mimetex/
 
 # Move docs into proper place:
 mv -f auth/README.txt README_auth.txt
@@ -92,12 +97,22 @@ mv -f question/format/README.txt README_question_format.txt
 mv -f question/format/webct/TODO.txt TODO_question_format_webct.txt
 mv -f theme/UPGRADE.txt UPGRADE_theme.txt
 
+%build
+cd mimetex
+%{__cc} %{rpmcflags} -DAA mimetex.c gifsave.c -lm -o mimetex.cgi
+
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_moodledir},%{_moodledata},%{_sysconfdir}/themes,/etc/httpd/httpd.conf}
 
 # Instalation:
 cp -R * $RPM_BUILD_ROOT%{_moodledir}
+
+# We don't need mimetex dir
+rm -rf $RPM_BUILD_ROOT%{_moodledir}/mimetex
+# But we need our binary
+rm -f $RPM_BUILD_ROOT%{_moodledir}/filter/tex/mimetex.*
+install mimetex/mimetex.cgi $RPM_BUILD_ROOT%{_moodledir}/filter/tex/mimetex.linux
 
 # Play with configs:
 mv -f $RPM_BUILD_ROOT%{_moodledir}/config-dist.php $RPM_BUILD_ROOT%{_sysconfdir}/config.php
@@ -111,12 +126,11 @@ for i in $THEMES; do
 	ln -sf %{_sysconfdir}/themes/$i $RPM_BUILD_ROOT%{_moodledir}/theme/$i/data
 done
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
+install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
+install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
 
 # Final cleanup:
 rm -f $RPM_BUILD_ROOT%{_moodledir}/{*.txt,tags,doc/COPYRIGHT.txt}
-rm -f $RPM_BUILD_ROOT%{_moodledir}/filter/tex/mimetex.{darwin,exe}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -398,26 +412,16 @@ fi
 %{_moodledir}/filter/*/*.pl
 %{_moodledir}/filter/*/*.pm
 %{_moodledir}/filter/*/*.swf
-%{_moodledir}/filter/tex/mimetex.linux
+%attr(755,root,root) %{_moodledir}/filter/tex/mimetex.linux
 # Is it needed? Maybe doc?
 %{_moodledir}/filter/mediaplugin/mp3player.fla.zip
 %{_moodledir}/filter/mediaplugin/flvplayer.fla.zip
 %{_moodledir}/filter/mediaplugin/*.js
-%{_moodledir}/filter/tex/mimetex.freebsd
 %dir %{_moodledir}/grade
 %{_moodledir}/grade/*
 %dir %{_moodledir}/group
 %{_moodledir}/group/*.php
 %{_moodledir}/group/*.js
-#%dir %{_moodledir}/group/db
-#{_moodledir}/group/db/*.php
-#{_moodledir}/group/db/install.xml
-#{_moodledir}/group/db/vssver.scc
-#%dir %{_moodledir}/group/lib
-#%{_moodledir}/group/lib/*.php
-#%{_moodledir}/group/lib/*.js
-#%dir %{_moodledir}/group/simpletest
-#%{_moodledir}/group/simpletest/*.php
 %dir %{_moodledir}/install
 %{_moodledir}/install/*.html
 %dir %{_moodledir}/install/lang
@@ -425,6 +429,7 @@ fi
 %dir %{_moodledir}/install/lang/ar_utf8
 %dir %{_moodledir}/install/lang/be_utf8
 %dir %{_moodledir}/install/lang/bg_utf8
+%dir %{_moodledir}/install/lang/bn_utf8
 %dir %{_moodledir}/install/lang/bs_utf8
 %dir %{_moodledir}/install/lang/ca_utf8
 %dir %{_moodledir}/install/lang/cs_utf8
@@ -461,6 +466,7 @@ fi
 %dir %{_moodledir}/install/lang/it_utf8
 %dir %{_moodledir}/install/lang/ja_utf8
 %dir %{_moodledir}/install/lang/ka_utf8
+%dir %{_moodledir}/install/lang/kk_utf8
 %dir %{_moodledir}/install/lang/km_utf8
 %dir %{_moodledir}/install/lang/kn_utf8
 %dir %{_moodledir}/install/lang/ko_utf8
