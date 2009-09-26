@@ -6,7 +6,7 @@ Summary:	Learning management system
 Summary(pl.UTF-8):	System zarządzania nauczaniem
 Name:		moodle
 Version:	1.9.5
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://download.moodle.org/stable19/%{name}-%{version}.tgz
@@ -31,7 +31,6 @@ Suggests:	php-openssl
 Suggests:	php-tokenizer
 Suggests:	php-xmlrpc
 BuildRequires:	unzip
-BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_moodledir	%{_datadir}/%{name}
