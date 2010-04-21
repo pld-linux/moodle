@@ -6,7 +6,7 @@ Summary:	Learning management system
 Summary(pl.UTF-8):	System zarządzania nauczaniem
 Name:		moodle
 Version:	1.9.5
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://download.moodle.org/stable19/%{name}-%{version}.tgz
