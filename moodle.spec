@@ -1,12 +1,13 @@
 # TODO:
 # - mark i18n content as lang()
 # - do sth with binary in %{_datadir}
+# - use external ZendFramework deps
 #
 Summary:	Learning management system
 Summary(pl.UTF-8):	System zarządzania nauczaniem
 Name:		moodle
 Version:	1.9.5
-Release:	4
+Release:	5
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://download.moodle.org/stable19/%{name}-%{version}.tgz
@@ -16,6 +17,7 @@ Source1:	http://www.forkosh.com/mimetex.zip
 Source2:	%{name}-http.conf
 Patch0:		%{name}-config.patch
 URL:		http://moodle.org/
+BuildRequires:	unzip
 Requires:	php(gd)
 Requires:	php(mysql)
 Requires:	php(pcre)
@@ -30,7 +32,6 @@ Suggests:	php-mbstring
 Suggests:	php-openssl
 Suggests:	php-tokenizer
 Suggests:	php-xmlrpc
-BuildRequires:	unzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_moodledir	%{_datadir}/%{name}
@@ -569,6 +570,7 @@ fi
 %dir %{_moodledir}/question/type/random
 %dir %{_moodledir}/question/type/randomsamatch
 %dir %{_moodledir}/question/type/shortanswer
+%dir %{_moodledir}/question/type/simpletest
 %dir %{_moodledir}/question/type/truefalse
 %dir %{_moodledir}/question/type/*/db
 %{_moodledir}/question/type/*.php
