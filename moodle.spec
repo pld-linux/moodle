@@ -99,7 +99,6 @@ mv -f mod/scorm/README.txt README_mod_scorm.txt
 mv -f question/format/README.txt README_question_format.txt
 mv -f question/format/webct/TODO.txt TODO_question_format_webct.txt
 mv -f repository/README.txt README_repository.txt
-mv -f repository/README.txt README_repository.txt
 mv -f search/README.txt README_search.txt
 
 %build
