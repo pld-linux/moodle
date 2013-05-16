@@ -7,14 +7,15 @@ Summary:	Learning management system
 Summary(pl.UTF-8):	System zarządzania nauczaniem
 Name:		moodle
 Version:	2.0.2
-Release:	0.1
+Release:	1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
 Source0:	http://download.moodle.org/stable20/%{name}-%{version}.tgz
 # Source0-md5:	c9ff3ca4aa6f8470993e331c3e59ed33
 Source1:	http://www.forkosh.com/mimetex.zip
 # Source1-md5:	56e66e59c0c78ca824ac0a2c54565539
-Source2:	%{name}-http.conf
+Source2:	%{name}-apache.conf
+Source3:	%{name}-httpd.conf
 Patch0:		%{name}-config.patch
 URL:		http://moodle.org/
 BuildRequires:	unzip
@@ -32,6 +33,7 @@ Suggests:	php-mbstring
 Suggests:	php-openssl
 Suggests:	php-tokenizer
 Suggests:	php-xmlrpc
+Conflicts:	apache-base < 2.4.0-1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_moodledir	%{_datadir}/%{name}
@@ -131,8 +133,8 @@ for d in $RPM_BUILD_ROOT%{_moodledir}/theme/* ; do
 	ln -sf %{_sysconfdir}/themes/$i $RPM_BUILD_ROOT%{_moodledir}/theme/$i/data
 done
 
-install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
+install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
 
 # Final cleanup:
 %{__rm} $RPM_BUILD_ROOT%{_moodledir}/{*.txt,tags}
@@ -149,10 +151,10 @@ rm -rf $RPM_BUILD_ROOT
 %triggerun -- apache1 < 1.3.37-3, apache1-base
 %webapp_unregister apache %{_webapp}
 
-%triggerin -- apache < 2.2.0, apache-base
+%triggerin -- apache-base
 %webapp_register httpd %{_webapp}
 
-%triggerun -- apache < 2.2.0, apache-base
+%triggerun -- apache-base
 %webapp_unregister httpd %{_webapp}
 
 %triggerpostun -- moodle < 1.6.3
