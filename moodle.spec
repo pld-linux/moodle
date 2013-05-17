@@ -6,14 +6,14 @@
 Summary:	Learning management system
 Summary(pl.UTF-8):	System zarządzania nauczaniem
 Name:		moodle
-Version:	2.0.2
+Version:	2.5
 Release:	1
 License:	GPL v2
 Group:		Applications/Databases/Interfaces
-Source0:	http://download.moodle.org/stable20/%{name}-%{version}.tgz
-# Source0-md5:	c9ff3ca4aa6f8470993e331c3e59ed33
+Source0:	http://download.moodle.org/download.php/direct/stable25/%{name}-%{version}.tgz
+# Source0-md5:	7d6af93119fc7a2aca605abf832f145a
 Source1:	http://www.forkosh.com/mimetex.zip
-# Source1-md5:	56e66e59c0c78ca824ac0a2c54565539
+# Source1-md5:	a5c256c62b33492553b1bc97f52fe596
 Source2:	%{name}-apache.conf
 Source3:	%{name}-httpd.conf
 Patch0:		%{name}-config.patch
@@ -76,16 +76,13 @@ mkdir mimetex
 unzip %{SOURCE1} -d mimetex/
 
 # Move docs into proper place:
-mv -f admin/xmldb/README.txt README_admin_xmldb.txt
 mv -f auth/cas/README-CAS README_auth_CAS.txt
 mv -f auth/fc/Readme.txt README_auth_fc.txt
 mv -f auth/ldap/README-LDAP README_auth_LDAP.txt
 mv -f auth/README.txt README_auth.txt
 mv -f auth/shibboleth/README.txt README_auth_shibboleth.txt
-mv -f backup/bb/README.txt README_bb.txt
 mv -f course/format/README.txt README_course_format.txt
 mv -f filter/censor/README.txt README_filter_censor.txt
-mv -f filter/mediaplugin/flvplayer.README.txt README_fliter_flvplayer.txt
 mv -f filter/multilang/README.txt README_filter_multilang.txt
 mv -f filter/tex/README.mimetex README_filter_tex_mimetex.txt
 mv -f filter/tex/readme_moodle.txt README_filter_tex.txt
@@ -97,11 +94,9 @@ mv -f mod/chat/README.txt README_mod_chat.txt
 mv -f mod/glossary/README.txt README_mod_glossary.txt
 mv -f mod/glossary/TODO.txt TODO_mod_glossary.txt
 mv -f mod/README.txt README_mod.txt
-mv -f mod/scorm/README.txt README_mod_scorm.txt
 mv -f question/format/README.txt README_question_format.txt
 mv -f question/format/webct/TODO.txt TODO_question_format_webct.txt
 mv -f repository/README.txt README_repository.txt
-mv -f search/README.txt README_search.txt
 
 %build
 cd mimetex
@@ -137,7 +132,7 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
 install %{SOURCE3} $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
 
 # Final cleanup:
-%{__rm} $RPM_BUILD_ROOT%{_moodledir}/{*.txt,tags}
+%{__rm} $RPM_BUILD_ROOT%{_moodledir}/*.txt
 
 find $RPM_BUILD_ROOT%{_moodledir} -type d -printf "%%%%dir \"%{_moodledir}/%%P\"\n" >files.list
 find $RPM_BUILD_ROOT%{_moodledir} \( ! -type d -a ! -name 'mimetex.linux' \) -printf "\"%{_moodledir}/%%P\"\n" >>files.list

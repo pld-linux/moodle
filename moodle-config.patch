@@ -1,14 +1,5 @@
 --- ./config-dist.php.org	Mon May 24 09:43:09 2004
 +++ ./config-dist.php	Sat Aug 14 23:00:31 2004
-@@ -80,7 +80,7 @@
- //    $CFG->dirroot = '/var/www/html/moodle';     // Redhat Linux
- //    $CFG->dirroot = '/home/example/public_html/moodle'; // Cpanel host
- 
--$CFG->dirroot   = '/home/example/public_html/moodle';
-+$CFG->dirroot   = '/usr/share/moodle';
- 
- 
- //=========================================================================
 @@ -96,7 +96,7 @@
  //
  // - On Windows systems you might specify something like 'c:\moodledata'
