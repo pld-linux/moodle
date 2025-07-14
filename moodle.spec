@@ -71,7 +71,7 @@ nauczania bezpośredniego.
 
 %prep
 %setup -q -n %{name}
-%patch0 -p1
+%patch -P0 -p1
 mkdir mimetex
 unzip %{SOURCE1} -d mimetex/
 
